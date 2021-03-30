@@ -1,0 +1,43 @@
+server:
+  port: 8006
+#服务名
+eureka:
+  client:
+    service-url:
+      defaultZone : http://127.0.0.1:8010/eureka/
+spring:
+  application:
+    name: gitclient
+  cloud:
+    config:
+      discovery:
+        enabled: true
+        #这里我们指定的是服务名称,如果配置中心有多个
+        #且用同一个服务名,我们的客户端拉取配置的时候死负载均衡的
+        #配置中心也是高可用
+        #指定分支
+        service-id: gitserver
+      label: master
+      #指定环境
+      profile: dev  #对应配置中心文件的${profile}
+      #github Webhooks实现刷新
+    bus:
+      #开启总线
+      enabled: true
+      #打开ack 跟踪的标志 (默认关闭)
+      trace:
+        enabled: true
+        #使用bus实现热部署
+  rabbitmq:
+    host: 127.0.0.1
+    port: 5672
+    username: guest
+    password: guest
+    #暴露刷新的端点
+management:
+  endpoints:
+    web:
+      exposure:
+        include: bus-refresh
+  #注意指定注册中心的配置不要公共配置中拉取,要在本地的配置文件中指定
+  #因为我们必须要先从注册中心去获取可用的配置中心,然后从配置中心去拉取配置

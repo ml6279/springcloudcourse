@@ -1,0 +1,32 @@
+server:
+  port: 8001
+#服务名
+spring:
+  application:
+    name: spring-cloud-gateway
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    database: 0
+
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      routes:
+        - id: requestratelimiter_route
+          uri: lb://eurekaClient
+          filters:
+            - name: RequestRateLimiter  #名称必须是 RequestRateLimiter
+              args:
+                redis-rate-limiter.replenishRate: 1 #允许用户每秒处理多少个请求
+                redis-rate-limiter.burstCapaciyt: 1 #令牌桶的容量, 允许在一秒内完成的最大请求数
+                key-resolver: "#{@ipKeyResolver}" #使用 SpEL 按名称引用 bean
+          predicates:
+            - Path=/prefix
+
+eureka:
+  client:
+    service-url:
+      defaultZone : http://127.0.0.1:8010/eureka/

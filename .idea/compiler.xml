@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="gatewayall" />
+        <module name="turbineconsumer" />
+        <module name="product1" />
+        <module name="gateway" />
+        <module name="eureka-client" />
+        <module name="gatetest" />
+        <module name="serverconfig" />
+        <module name="zipkin" />
+        <module name="trubinservice" />
+        <module name="serverconfig2" />
+        <module name="consumer1" />
+        <module name="commons" />
+        <module name="eurekaserver" />
+        <module name="zuulservice" />
+        <module name="turbineproduct" />
+      </profile>
+    </annotationProcessing>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="commons" options="-parameters" />
+      <module name="consumer1" options="-parameters" />
+      <module name="eureka-client" options="-parameters" />
+      <module name="eurekaserver" options="-parameters" />
+      <module name="gatetest" options="-parameters" />
+      <module name="gateway" options="-parameters" />
+      <module name="gatewayall" options="-parameters" />
+      <module name="product1" options="-parameters" />
+      <module name="serverconfig" options="-parameters" />
+      <module name="serverconfig2" options="-parameters" />
+      <module name="trubinservice" options="-parameters" />
+      <module name="turbineconsumer" options="-parameters" />
+      <module name="turbineproduct" options="-parameters" />
+      <module name="zipkin" options="-parameters" />
+      <module name="zuulservice" options="-parameters" />
+    </option>
+  </component>
+</project>

@@ -1,0 +1,11 @@
+server:
+  port: 8002
+#服务名
+spring:
+  application:
+    name: gatewaytest
+
+eureka:
+  client:
+    service-url:
+      defaultZone : http://127.0.0.1:8010/eureka/

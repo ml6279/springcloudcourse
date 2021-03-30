@@ -1,0 +1,24 @@
+server:
+  port: 8050
+#服务名
+spring:
+  application:
+    name: gateway
+  cloud:
+    gateway:
+      routes:
+        - id: test1
+          uri: lb://eurekaClient
+          predicates:
+            - Path=/lbtest/**,/header/**
+        - id: prefix
+          uri: lb://eurekaClient
+          predicates:
+            - Path=/prefix/prefix
+          filters:
+            - StripPrefix=1
+
+eureka:
+  client:
+    service-url:
+      defaultZone : http://127.0.0.1:8010/eureka/

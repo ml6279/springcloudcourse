@@ -1,0 +1,12 @@
+server:
+  port: 8022
+spring:
+  application:
+    name : eurekaClient
+eureka:
+  client:
+    service-url:
+      defaultZone : http://127.0.0.1:8010/eureka/
+  #instance:
+  #  instance-id: eurekaClient
+  #  ip-address: true

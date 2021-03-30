@@ -1,0 +1,22 @@
+server:
+  port: 8005
+#服务名
+eureka:
+  client:
+    service-url:
+      defaultZone : http://127.0.0.1:8010/eureka/
+spring:
+  application:
+    name: gitserver
+  cloud:
+      config:
+        server:
+          git:
+            uri: https://github.com/southben/my
+            #uri :file:///D:/www
+            #search-paths:config
+            #仓库是公开的不需要使用用户名和密码
+            username:
+            password:
+            basedir: D:\www
+        label: master

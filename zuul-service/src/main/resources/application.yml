@@ -1,0 +1,19 @@
+server:
+  port: 8090
+  #指定服务命名
+spring:
+  application:
+    name: spring-zuul
+  #指定注册中心地址
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:8010/eureka/
+zuul:
+  routes:
+    zuul-service:     #网关路由服务名字，自己取
+      path: /client/**   #路由的地址，**表示任意地址都路由，只要带了/client
+      serviceId: eurekaClient  #路由到哪个微服务上，微服务的名称
+      #允许网关传递cookie和请求头等信息，2项打开，否则默认网关不传递
+  sensitive-headers: true
+  add-host-header: true
